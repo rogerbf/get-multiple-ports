@@ -1,4 +1,4 @@
-import start from './startServer.js'
+import start from './startServer'
 
 test(`start`, () => {
   expect(typeof (start)).toEqual(`function`)
