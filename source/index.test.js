@@ -1,4 +1,4 @@
-import getPorts from './index2'
+import getPorts from './index'
 
 test(`getPorts`, () => {
   expect(typeof (getPorts)).toEqual(`function`)
