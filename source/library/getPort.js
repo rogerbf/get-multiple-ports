@@ -1,1 +1,1 @@
-export default server => server.address().port
+export default entity => ({ ...entity, port: entity.server.address().port })

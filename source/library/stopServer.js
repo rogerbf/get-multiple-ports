@@ -1,8 +1,8 @@
-export default server => new Promise(
+export default entity => new Promise(
   (resolve, reject) => {
-    server.close(error => {
+    entity.server.close(error => {
       error && reject(error)
-      resolve()
+      resolve(entity)
     })
   }
 )

@@ -5,5 +5,5 @@ test(`getPort`, () => {
   const server = {
     address: jest.fn(() => ({ port: 3000 }))
   }
-  expect(getPort(server)).toEqual(3000)
+  expect(getPort({ server })).toEqual({ server, port: 3000 })
 })

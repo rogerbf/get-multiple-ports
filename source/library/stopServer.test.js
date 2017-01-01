@@ -9,7 +9,7 @@ test(`resolves`, () => {
     close: jest.fn(fn => fn())
   }
 
-  stop(server)
+  stop({ server })
     .then(() => {
       expect(server.close.mock.calls.length).toEqual(1)
     })
@@ -23,7 +23,7 @@ test(`rejects`, () => {
 
   const success = jest.fn()
 
-  stop(server)
+  stop({ server })
     .then(success)
     .catch(error => {
       expect(error).toEqual(`there was an error`)

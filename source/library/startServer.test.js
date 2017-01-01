@@ -13,11 +13,11 @@ test(`start`, () => {
     return server
   })
 
-  const actual = start({ createServer, name: `robot` })
+  const target = { name: `kirk` }
+
+  const actual = start(target, createServer)
   .then(instance => {
-    expect(typeof (instance)).toEqual(`object`)
-    expect(instance.name).toEqual(`robot`)
-    expect(instance.instance).toEqual(server)
+    expect(instance).toEqual({ ...target, server })
   })
   .catch(error => {
     expect(error).toBeFalsy()

@@ -1,10 +1,10 @@
-export default ({ createServer, name }) => new Promise(
+import net from 'net'
+
+export default (target, createServer = net.createServer) => new Promise(
   (resolve, reject) => {
-    const server = createServer()
-    server.unref()
-    server.on(`error`, reject)
-    server.listen(0, () => {
-      resolve({ name, instance: server })
-    })
+    const instance = createServer()
+    instance.unref()
+    instance.on(`error`, error => reject(error))
+    instance.listen(0, () => resolve({ ...target, server: instance }))
   }
 )
