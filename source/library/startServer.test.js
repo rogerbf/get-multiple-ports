@@ -13,11 +13,11 @@ test(`start`, () => {
     return server
   })
 
-  const target = { name: `kirk` }
+  const entity = { name: `kirk` }
 
-  const actual = start(target, createServer)
+  const actual = start(entity, createServer)
   .then(instance => {
-    expect(instance).toEqual({ ...target, server })
+    expect(instance).toEqual({ ...entity, server })
   })
   .catch(error => {
     expect(error).toBeFalsy()
@@ -27,4 +27,28 @@ test(`start`, () => {
   expect(server.unref.mock.calls.length).toEqual(1)
   expect(server.on.mock.calls[0][0]).toEqual(`error`)
   expect(server.listen.mock.calls[0][0]).toEqual(0)
+})
+
+test(`rejects`, () => {
+  const server = {
+    unref: jest.fn(),
+    on: jest.fn((eventName, handler) => {
+      eventName === `error` && handler(`something went wrong`)
+    }),
+    listen: jest.fn((port, fn) => fn())
+  }
+
+  const createServer = jest.fn(() => {
+    return server
+  })
+
+  const entity = { name: `kirk` }
+
+  start(entity, createServer)
+  .then(instance => {
+    expect(instance).toBeFalsy()
+  })
+  .catch(error => {
+    expect(error).toEqual(`something went wrong`)
+  })
 })
