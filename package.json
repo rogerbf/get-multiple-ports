@@ -1,7 +1,7 @@
 {
   "name": "get-multiple-ports",
   "version": "1.0.0",
-  "description": "retrieve multiple random open ports",
+  "description": "retrieve multiple, random, available ports",
   "main": "./distribution/index.js",
   "scripts": {
     "test": "jest --config .jest",
