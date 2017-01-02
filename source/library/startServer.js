@@ -1,4 +1,4 @@
-export default (entity, createServer) => new Promise(
+export default (createServer, entity) => new Promise(
   (resolve, reject) => {
     const instance = createServer()
     instance.unref()

@@ -15,7 +15,7 @@ test(`start`, () => {
 
   const entity = { name: `kirk` }
 
-  const actual = start(entity, createServer)
+  const actual = start(createServer, entity)
   .then(instance => {
     expect(instance).toEqual({ ...entity, server })
   })
@@ -44,7 +44,7 @@ test(`rejects`, () => {
 
   const entity = { name: `kirk` }
 
-  start(entity, createServer)
+  start(createServer, entity)
   .then(instance => {
     expect(instance).toBeFalsy()
   })
