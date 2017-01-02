@@ -1,12 +1,12 @@
 import { createServer } from 'net'
-import parseInput from './library/parseInput'
+import normalizeInput from './library/normalizeInput'
 import startServer from './library/startServer'
 import addPort from './library/addPort'
 import stopServer from './library/stopServer'
 import compact from './library/compact'
 
 export default input =>
-  Promise.resolve(parseInput(input))
+  Promise.resolve(normalizeInput(input))
   .then(entities =>
     Promise.all(entities.map(entity => startServer(entity, createServer)))
   )
