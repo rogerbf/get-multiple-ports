@@ -1,6 +1,6 @@
 {
   "name": "get-multiple-ports",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "",
   "main": "./distribution/index.js",
   "scripts": {
@@ -18,7 +18,16 @@
     "coverage": "jest --config .jest --coverage",
     "watch:coverage": "jest --config .jest --coverage --watch"
   },
-  "keywords": [],
+  "keywords": [
+    "port",
+    "ports",
+    "get ports",
+    "multiple ports",
+    "open",
+    "open ports",
+    "find",
+    "find ports"
+  ],
   "author": "rogerbf <roger@bergfalk.nu> (http://bergfalk.nu/)",
   "license": "MIT",
   "devDependencies": {
