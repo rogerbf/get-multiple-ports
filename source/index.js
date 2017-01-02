@@ -1,15 +1,4 @@
 import { createServer } from 'net'
-import normalizeInput from './library/normalizeInput'
-import startServer from './library/startServer'
-import addPort from './library/addPort'
-import stopServer from './library/stopServer'
-import extractResults from './library/extractResults'
+import getMultiplePorts from './library/getMultiplePorts'
 
-export default input =>
-  Promise.resolve(normalizeInput(input))
-  .then(entities =>
-    Promise.all(entities.map(entity => startServer(entity, createServer)))
-  )
-  .then(entities => entities.map(entity => addPort(entity)))
-  .then(entities => Promise.all(entities.map(entity => stopServer(entity))))
-  .then(entities => extractResults(entities))
+export default getMultiplePorts.bind(null, createServer)
