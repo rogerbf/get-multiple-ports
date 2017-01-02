@@ -7,9 +7,9 @@ import compact from './library/compact'
 
 export default input =>
   Promise.resolve(parseInput(input))
-  .then(entities => Promise.all(entities.map(
-    entity => startServer(entity, createServer)
-  )))
+  .then(entities =>
+    Promise.all(entities.map(entity => startServer(entity, createServer)))
+  )
   .then(entities => entities.map(entity => getPort(entity)))
   .then(entities => Promise.all(entities.map(entity => stopServer(entity))))
   .then(entities => compact(entities))
