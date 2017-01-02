@@ -3,7 +3,7 @@ import normalizeInput from './library/normalizeInput'
 import startServer from './library/startServer'
 import addPort from './library/addPort'
 import stopServer from './library/stopServer'
-import compact from './library/compact'
+import extractResults from './library/extractResults'
 
 export default input =>
   Promise.resolve(normalizeInput(input))
@@ -12,4 +12,4 @@ export default input =>
   )
   .then(entities => entities.map(entity => addPort(entity)))
   .then(entities => Promise.all(entities.map(entity => stopServer(entity))))
-  .then(entities => compact(entities))
+  .then(entities => extractResults(entities))

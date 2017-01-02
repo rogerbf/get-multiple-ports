@@ -1,10 +1,10 @@
-import compact from './compact'
+import extractResults from './extractResults'
 
-test(`compact`, () => {
-  expect(typeof (compact)).toEqual(`function`)
+test(`extractResults`, () => {
+  expect(typeof (extractResults)).toEqual(`function`)
 
   expect(
-    compact([
+    extractResults([
       { name: `kirk`, port: 22 },
       { name: `spock`, port: 443 },
       { name: `sulu`, port: 467 }
@@ -18,7 +18,7 @@ test(`compact`, () => {
   )
 
   expect(
-    compact([
+    extractResults([
       { port: 22 },
       { name: `spock`, port: 443 },
       { port: 467 }
@@ -31,5 +31,5 @@ test(`compact`, () => {
     ]
   )
 
-  expect(compact([ { port: 22 } ])).toEqual(22)
+  expect(extractResults([ { port: 22 } ])).toEqual(22)
 })
