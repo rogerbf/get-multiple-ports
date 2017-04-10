@@ -1,4 +1,4 @@
-import { createServer } from 'net'
-import getMultiplePorts from './library/getMultiplePorts'
+const { createServer } = require(`net`)
+const ports = require(`./get-multiple-ports`)
 
-export default getMultiplePorts.bind(null, createServer)
+module.exports = ports.bind(null, createServer)

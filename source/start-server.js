@@ -1,4 +1,4 @@
-export default createServer => new Promise(
+module.exports = createServer => new Promise(
   (resolve, reject) => {
     const instance = createServer()
     instance.unref()
