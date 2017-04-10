@@ -1,7 +1,5 @@
-export default entity => {
-  const count = typeof (entity) === `number` ? Array(entity).fill({}) : null
-  const names = Array.isArray(entity) ? entity.map(name => ({ name })) : null
-  const name = typeof (entity) === `string` ? [{ name: entity }] : null
-  const empty = !entity ? [{}] : null
-  return (count || names || name || empty)
-}
+export default (entity = 1) => ({
+  String: entity => Array.of({ name: entity }),
+  Number: entity => Array(entity).fill(undefined),
+  Array: entity => entity.map(name => ({ name: name }))
+}[entity.constructor.name](entity))
