@@ -7,7 +7,7 @@ module.exports = async (createServer, keys) => {
   const servers = await Promise.all(
     Array(names.length)
     .fill(undefined)
-    .map(startServer(createServer))
+    .map(startServer.bind(null, createServer))
   )
   const ports = servers.map(server => server.address().port)
   await Promise.all(servers.map(stopServer))
