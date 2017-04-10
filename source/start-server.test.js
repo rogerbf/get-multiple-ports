@@ -14,20 +14,18 @@ describe(`startServer`, () => {
       return server
     })
 
-    const actual = (
-    start(createServer)
-    .then(instance => {
-      expect(instance).toEqual(server)
-    })
-    .catch(error => {
-      expect(error).toBeFalsy()
-    })
-  )
-
-    expect(actual.constructor.name).toEqual(`Promise`)
-    expect(server.unref).toHaveBeenCalled()
-    expect(server.on).toHaveBeenCalled()
-    expect(server.listen).toHaveBeenCalled()
+    return (
+      start(createServer)
+      .then(instance => {
+        expect(instance).toEqual(server)
+        expect(server.unref).toHaveBeenCalled()
+        expect(server.on).toHaveBeenCalled()
+        expect(server.listen).toHaveBeenCalled()
+      })
+      .catch(error => {
+        expect(error).toBeFalsy()
+      })
+    )
   })
 
   test(`rejects`, () => {
@@ -43,12 +41,14 @@ describe(`startServer`, () => {
       return server
     })
 
-    start(createServer)
-    .then(instance => {
-      expect(instance).toBeFalsy()
-    })
-    .catch(error => {
-      expect(error).toEqual(`something went wrong`)
-    })
+    return (
+      start(createServer)
+      .then(instance => {
+        expect(instance).toBeFalsy()
+      })
+      .catch(error => {
+        expect(error).toEqual(`something went wrong`)
+      })
+    )
   })
 })

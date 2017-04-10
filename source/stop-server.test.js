@@ -6,11 +6,13 @@ describe(`stopServer`, () => {
       close: jest.fn(fn => fn())
     }
 
-    stopServer(server)
-    .then(() => {
-      expect(server.close).toHaveBeenCalled()
-    })
-    .catch(error => expect(error).toBeFalsy())
+    return (
+      stopServer(server)
+      .then(() => {
+        expect(server.close).toHaveBeenCalled()
+      })
+      .catch(error => expect(error).toBeFalsy())
+    )
   })
 
   test(`rejects`, () => {
@@ -20,11 +22,13 @@ describe(`stopServer`, () => {
 
     const success = jest.fn()
 
-    stopServer(server)
-    .then(success)
-    .catch(error => {
-      expect(error).toEqual(`there was an error`)
-      expect(success).not.toHaveBeenCalled()
-    })
+    return (
+      stopServer(server)
+      .then(success)
+      .catch(error => {
+        expect(error).toEqual(`there was an error`)
+        expect(success).not.toHaveBeenCalled()
+      })
+    )
   })
 })
