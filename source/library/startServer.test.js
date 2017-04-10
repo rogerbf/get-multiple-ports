@@ -13,20 +13,20 @@ test(`start`, () => {
     return server
   })
 
-  const entity = { name: `kirk` }
-
-  const actual = start(createServer, entity)
-  .then(instance => {
-    expect(instance).toEqual({ ...entity, server })
-  })
-  .catch(error => {
-    expect(error).toBeFalsy()
-  })
+  const actual = (
+    start(createServer)
+    .then(instance => {
+      expect(instance).toEqual(server)
+    })
+    .catch(error => {
+      expect(error).toBeFalsy()
+    })
+  )
 
   expect(actual.constructor.name).toEqual(`Promise`)
-  expect(server.unref.mock.calls.length).toEqual(1)
-  expect(server.on.mock.calls[0][0]).toEqual(`error`)
-  expect(server.listen.mock.calls[0][0]).toEqual(0)
+  expect(server.unref).toHaveBeenCalled()
+  expect(server.on).toHaveBeenCalled()
+  expect(server.listen).toHaveBeenCalled()
 })
 
 test(`rejects`, () => {
@@ -42,9 +42,7 @@ test(`rejects`, () => {
     return server
   })
 
-  const entity = { name: `kirk` }
-
-  start(createServer, entity)
+  start(createServer)
   .then(instance => {
     expect(instance).toBeFalsy()
   })

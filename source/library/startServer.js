@@ -1,8 +1,8 @@
-export default (createServer, entity) => new Promise(
+export default createServer => new Promise(
   (resolve, reject) => {
     const instance = createServer()
     instance.unref()
-    instance.on(`error`, error => reject(error))
-    instance.listen(0, () => resolve({ ...entity, server: instance }))
+    instance.on(`error`, reject)
+    instance.listen(0, resolve.bind(null, instance))
   }
 )
