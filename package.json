@@ -1,7 +1,7 @@
 {
   "name": "get-multiple-ports",
   "version": "2.0.0",
-  "description": "attain several ports",
+  "description": "attain several available ports",
   "main": "./distribution/index.js",
   "scripts": {
     "test": "jest --config .jest",
