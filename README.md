@@ -1,6 +1,6 @@
 # get-multiple-ports
 
-Get a number of (optionally named) ports.
+Get a number of (optionally named) available ports.
 
 ## usage
 
