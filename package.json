@@ -53,5 +53,13 @@
     "distribution",
     "README.md"
   ],
-  "dependencies": {}
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rogerbf/get-multiple-ports.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rogerbf/get-multiple-ports/issues"
+  },
+  "homepage": "https://github.com/rogerbf/get-multiple-ports#readme"
 }
